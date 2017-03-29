@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,
+div,p,span,table,caption,thead,tfoot,tbody,tr,th,td,ol,ul,li,dl,dt,dd,
+a,form,input,select,option,textarea,strong,img,iframe,
+fieldset,legend,label,address,button,pre,map,object,blockquote,abbr,acronym,big,cite,code,
+del,dfn,em,ins,kbd,q,s,samp,small,sub,sup,tt,var,b,u,i,
+*{border:0;padding:0;margin:0;vertical-align:top}
+ol,ul,li{list-style:none}
+a{text-decoration:none}
+table{border-collapse:collapse;border-spacing:0}
+table caption{width:0;height:0;font-size:0;height:0;overflow:hidden;visibility:hidden}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}
+
+/*event*/
+.wrap{position: relative; width: 100%; min-width: 925px; margin: 0 auto; background: url(../img/bg.jpg) repeat 0 100%; }
+.innerBg{width: 100%; min-width: 925px; margin: 0 auto; background: url(../img/bg_tw.png) no-repeat 50% 0;z-index: 10;}
+.wrap .line{position: absolute; top:50px; left:0; width: 100%; height: 12px; z-index: 10;}
+.wrap .line img{width:100%; height: 12px;}
+.wrap .tw img{width: 50%;}
+
+.event{position: relative; width:925px;text-align:center; margin:0 auto;}
+.event .tag{position: absolute; top:-307px; right: 0px;z-index: 20;}
+.event .point{position: absolute; top:100px; left:200px; z-index: 10;}
+.event .main{padding-top: 120px;}
+.event .qna .list{padding-top: 60px; text-align: center; margin: 0 auto; padding-left:32.5px; }
+.event .qna .list li{display: block; width: 820px; padding: 15px 0 20px 40px; text-align: left; background: #ebebeb; border-radius: 5px; margin-bottom: 30px;}
+.list li .tit{font-weight: bold; font-size: 18px; cursor: pointer;}
+.list li .tit span.pointQ{font-weight: bold; font-size: 22px; color: #ee3439; padding-right: 10px; vertical-align: bottom;} 
+.list li .tit span.arrow{float: right; padding-right: 20px;}
+.list li .tit span.arrow img{padding-top: 10px;}
+.list li .tit span.arrow img.up{display: none;}
+.list li .txt{display: none; padding: 20px 40px 20px 10px; text-align: justify; line-height: 1.5;}
+.list li .txt p{padding-bottom: 5px;}
+.list li .txt strong{color: #ee3439;}
+.list li .txt .color{font-style: italic; color: #ee3439}
+.list li .txt span.pointA{font-weight: bold; font-size: 22px; color: #ccc; padding-right: 10px; vertical-align: bottom;} 
+.event .preBtn{padding: 60px 0;}
+.event .preBtn a{display: inline-block;}
+
+/*table style*/
+table tbody tr td.row{vertical-align: middle;}
+
+.mate_table table{width: 100%; border-bottom: 2px solid #ccc; border-collapse: collapse;} 
+.mate_table table thead tr th{padding: 10px 0;}
+/*.mate_table table thead tr th span{float: right; margin-right: 20px;}*/
+.mate_table table thead tr th.table_tit{padding-top: 30px; color: #ee3439; font-size: 18px; text-align: left;}
+.mate_table table thead tr th.table_tit span{vertical-align: bottom; padding-right: 10px;}
+.mate_table table thead tr th.table_tit span img{width: 55px; vertical-align: bottom;}
+.mate_table table tbody tr:first-child{border-top:2px solid #ccc;}
+.mate_table table tbody tr td{padding: 10px 0; border-bottom: 1px dotted #ccc;}
+.mate_table table tbody tr.part td:first-child{border-bottom: 2px dotted #ccc;}
+.mate_table table tbody tr td.row{text-align: center;}
+
+
+.list li .txt .refund_table table td strong{color:#4f4f4f;}
+.refund_table{padding: 20px 0;}
+.refund_table table{width: 100%; border-collapse: collapse;}
+.refund_table table thead{background: #ccc;}
+.refund_table table thead tr th{width: 25%; padding: 10px 0;border-bottom: 2px solid #4f4f4f; border-left: 1px solid #fff; color: #4f4f4f; text-align: center;}
+.refund_table table thead tr th:first-child{border-left:0px;}
+.refund_table table tbody tr td{padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; text-align: left;}
+
+.refund_table table tbody tr td.last{border-right: 0px;}
