@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Seoul');
+
 /**
  * CodeIgniter
  *
@@ -36,6 +38,28 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+// dev hostname setting ----------------------------------//
+if($_SERVER["SERVER_NAME"] == 'localhost')
+{
+    $sHostURL = 'http://localhost/~hojunlee/CI';
+    $sStaticURL = 'http://localhost/~hojunlee/CI/common_static/AdminLTE-2.3.0';
+    $sStatic  = 'http://localhost/~hojunlee/CI/common_static';
+    $sCookieDomain = "localhost";
+}
+else
+{
+    $sHostURL = 'http://192.168.9.221/~hojunlee/CI';
+    $sStaticURL = 'http://192.168.9.221/~hojunlee/CI/common_static/AdminLTE-2.3.0';
+    $sStatic  = 'http://192.168.9.221/~hojunlee/CI/common_static';
+    $sCookieDomain = "192.168.9.221";
+}
+
+define("HOSTURL", $sHostURL);
+define("IMGURL", $sStaticURL);
+define("SURL", $sStatic);
+define("CKDOMAIN", $sCookieDomain);
+
 
 /**
  * Common Functions

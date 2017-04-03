@@ -677,10 +677,34 @@ $config['query'] = array(
             ,'btype'=> 'iii'
             ,'null' => array() 
         )
- 
-
-
 
     )
-
+    ,'admin' => array(
+        'getBookCount' => array(
+            'query' => "
+                SELECT A.g_num, A.g_name, count(*) as CNT
+                FROM (
+                  SELECT so.order_code, so.user_name , so.regdate, sol.g_name, sol.g_num
+                  FROM titanbooks.shop_order so , titanbooks.shop_order_list sol
+                  where so.order_code = sol.order_code
+                  AND so.regdate >= ?
+                  AND so.regdate <= ?
+                ) as A
+                GROUP BY g_num"
+            ,'data' => array('sDate','eDate')
+            ,'btype'=> 'ss'
+            ,'null' => array()
+        )
+        ,'getBookCountMeta' => array(
+            'query' => "
+                SELECT so.order_code, so.user_name , so.regdate, sol.g_name, sol.g_num
+                  FROM titanbooks.shop_order so , titanbooks.shop_order_list sol
+                  where so.order_code = sol.order_code
+                  AND so.regdate >= ?
+                  AND so.regdate <= ?"
+        ,'data' => array('sDate','eDate')
+        ,'btype'=> 'ss'
+        ,'null' => array()
+        )
+    )
 );

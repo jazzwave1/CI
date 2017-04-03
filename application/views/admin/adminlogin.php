@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Codinglcub</title>
+    <title>에듀니티</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -45,7 +45,8 @@
 
   <body class="hold-transition login-page">
     <div class="login-box">
-      <div class="login-logo"><b>CodingClub</b>
+      <div class="login-logo"><b>신성장사업부문</b>
+      <br>
       <br>
       <br>
       <div class="login-logo">Admin Login
