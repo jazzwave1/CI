@@ -34,19 +34,13 @@ echo "-->";
 ?>
 
 
-<!-- jQuery 2.1.4 -->
-<script src="<?=IMGURL?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- Bootstrap 3.3.5 -->
-<script src="<?=IMGURL?>/bootstrap/js/bootstrap.min.js"></script>
+
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<?=IMGURL?>/plugins/morris/morris.min.js"></script>
 <!-- FastClick -->
 <script src="<?=IMGURL?>/plugins/fastclick/fastclick.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?=IMGURL?>/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?=IMGURL?>/dist/js/demo.js"></script>
+
 <!-- page script -->
 <script>
     $(function () {

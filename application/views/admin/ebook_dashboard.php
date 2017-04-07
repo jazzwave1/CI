@@ -26,9 +26,8 @@ if(!$sSearchDate)
             <div class="col-md-12">
                 <button class="btn btn-block btn-primary" id="bSearch">검색</button>
             </div><!-- /.row -->
-    </div><!-- /.box -->
-
-</div><!-- /.row -->
+        </div><!-- /.box -->
+    </div><!-- /.row -->
 <div class="col-md-12">
 
 
