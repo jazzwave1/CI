@@ -330,37 +330,7 @@ class admin extends CI_Controller {
     
     $this->load->view('admin/layout', $data);  
   }/*}}}*/
-  public function filedown()/*{{{*/
-  {
-    // check login
-    $this->chkCookie() ;
-   
-    // get main data
-    $aMainData = array();
-    $aMainData['aRowData'] = $this->admin_model->getAutumnCampFull(); 
-
-    // view setting
-    $aMenu = $this->_setMenuActive(2);
-    
-    $aContentHeader= array( 
-       'bTitle' => '16년 가을학기 신청자 다운로드'
-      ,'sTitle' => '전체 내용은 다운로드 하셔서 보시기 바랍니다.' 
-      ,'navi'   => array('다운로드', '16년 가을학기')
-    );
-    $temp = "";
- 
-    $data = array(
-       'menu'   => $this->load->view('admin/menu', $aMenu , true)
-      ,'content_header' => $this->load->view('admin/content_header', $aContentHeader , true)
-      ,'main_content' => $this->load->view('admin/filedownlist', $aMainData, true) 
-      ,'footer' => $this->load->view('admin/footer', $temp, true)
-    );
-    
-    $this->load->view('admin/layout', $data);  
-
-  }/*}}}*/
-
-
+  
   public function rpcAdminLogin()/*{{{*/
   {
     $accountID = trim($this->input->post('account_id')); 
