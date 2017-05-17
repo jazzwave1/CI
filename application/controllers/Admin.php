@@ -41,7 +41,9 @@ class admin extends CI_Controller {
   }
   public function test()
   {
-    $this->load->view('admin/table_test.php');
+      echo "<pre>";
+      $this->admin_model->getAws() ;
+      //$this->load->view('admin/table_test.php');
   }
   public function index()/*{{{*/
   {

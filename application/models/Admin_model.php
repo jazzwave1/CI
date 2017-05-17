@@ -23,5 +23,9 @@ class Admin_model extends CI_model
         $aInput = array('sDate'=>$sSDate."000000",'eDate'=>$sEDate."235959") ;
         return $this->admin_dao->getBookCountMeta($aInput);
     }
-
+    public function getAws()
+    {
+        $aInput = array('account'=>'1') ;
+        return $this->admin_dao->getAws($aInput);
+    }
 }
