@@ -3,28 +3,37 @@ class Common_dao extends CI_Model
 {
     function __construct()
     {
-      parent::__construct();
+        parent::__construct();
     }
     public function chkParam( $aConfig , $aParam, $aNull=array() )
     {
-      $chkParam = true;
-      foreach($aConfig as $key=>$val)
-      {
-        if( $aParam[$val]=='' && !in_array($val, $aNull) )
+        $chkParam = true;
+        $aData = array();
+        if($aParam)
         {
-          //echo $val;
-          $chkParam = false;
-          break;
+            foreach($aConfig as $key=>$val)
+            {
+                if( $aParam[$val]=='' && !in_array($val, $aNull) )
+                {
+                    //echo $val;
+                    $chkParam = false;
+                    break;
+                }
+                if($aParam[$val] == '')
+                    $aParam[$val] = NULL;
+                $aData[] = $aParam[$val];
+            }
+        } 
+
+        if($chkParam)
+        {
+            if(!$aData) 
+                return true; 
+            
+            return $aData;
         }
-        if($aParam[$val] == '')
-          $aParam[$val] = NULL;
-        $aData[] = $aParam[$val];
-      }
-      
-      if($chkParam)
-        return $aData;
-      else
-        return $chkParam;
+        else
+            return $chkParam;
     }
     public function runQueryFromDB($query , $aInputData, $bType, $dbname, $rType='object')
     {
@@ -33,20 +42,20 @@ class Common_dao extends CI_Model
         //echo "bTtype : ".$bType."<br>" ;
         //echo "Array Input : ";
         //print_r($aInputData);
-        
+
         if ($oResult = $dbname->query($query, $aInputData, true, $bType))
         {
             if(strstr(strtoupper( $query ),"SELECT") && !(strstr(strtoupper( $query ),"DELETE") || strstr(strtoupper( $query ),"INSERT") || strstr(strtoupper( $query ),"UPDATE")))
             {
-              if($rType == 'object')
-                $result = $oResult->result();
-              else
-                $result = $oResult->result_array();
+                if($rType == 'object')
+                    $result = $oResult->result();
+                else
+                    $result = $oResult->result_array();
 
-              return $result;
+                return $result;
             }
             else
-              return true;
+                return true;
         }
         else
         {
@@ -61,20 +70,20 @@ class Common_dao extends CI_Model
         //echo "bTtype : ".$bType."<br>" ;
         //echo "Array Input : ";
         //print_r($aInputData);
-        
+
         if ($oResult = $this->db->query($query, $aInputData, true, $bType))
         {
             if(strstr(strtoupper( $query ),"SELECT") && !(strstr(strtoupper( $query ),"DELETE") || strstr(strtoupper( $query ),"INSERT") || strstr(strtoupper( $query ),"UPDATE")))
             {
-              if($rType == 'object')
-                $result = $oResult->result();
-              else
-                $result = $oResult->result_array();
+                if($rType == 'object')
+                    $result = $oResult->result();
+                else
+                    $result = $oResult->result_array();
 
-              return $result;
+                return $result;
             }
             else
-              return true;
+                return true;
         }
         else
         {
@@ -112,10 +121,10 @@ class Common_dao extends CI_Model
         $this->setLog($aLog);
         return $ret;
     }
-    public function actModelFuc($aConfig, $aParam, $rType='object')
+    public function actModelFuc($aConfig, $aParam, $rType='object', $rPK=false)
     {
-        if(!$aConfig || !$aParam) return false;
-        
+        if(!$aConfig) return false;
+
         $query = $aConfig['query'];
         $aData = $aConfig['data'];
         $bType = $aConfig['btype'];
@@ -123,17 +132,26 @@ class Common_dao extends CI_Model
 
         if ( ! $aInputData = $this->chkParam($aData, $aParam, $aNull) )
         {
-          return false;
+            return false;
         }
         if ($result = $this->runQuery($query , $aInputData, $bType, $rType))
-          return $result;
+        {
+            if($rPK)
+            {
+                return $this->db->insert_id();
+            }
+            else
+            {
+                return $result;
+            }
+        }
         else
-          return false;
+            return false;
     }
-    public function actModelFucFromDB($aConfig, $aParam, $dbname, $rType='object')
+    public function actModelFucFromDB($aConfig, $aParam, $dbname, $rType='object', $rPK=false)
     {
         if(!$aConfig || !$aParam) return false;
-        
+
         $query = $aConfig['query'];
         $aData = $aConfig['data'];
         $bType = $aConfig['btype'];
@@ -141,12 +159,21 @@ class Common_dao extends CI_Model
 
         if ( ! $aInputData = $this->chkParam($aData, $aParam, $aNull) )
         {
-          return false;
+            return false;
         }
         if ($result = $this->runQueryFromDB($query , $aInputData, $bType, $dbname, $rType))
-          return $result;
+        {
+            if($rPK)
+            {
+                return $dbname->insert_id(); 
+            }
+            else
+            {
+                return $result;
+            } 
+        }    
         else
-          return false;
+            return false;
     }
 }
 ?>
